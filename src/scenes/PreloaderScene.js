@@ -1,19 +1,14 @@
-/* eslint-disable prefer-const */
 /* eslint-disable func-names */
 import Phaser from 'phaser';
-
 import star from '../assets/star.png';
 import dude from '../assets/dude.png';
 import sky from '../assets/sky.png';
 import bomb from '../assets/bomb.png';
 import platform from '../assets/platform.png';
-
 import phaserLogo from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkedBox from '../assets/ui/blue_boxCheckmark.png';
 import bgMusic from '../assets/TownTheme.mp3';
-import button1 from '../assets/ui/button1.png';
-import button2 from '../assets/ui/button2.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -30,18 +25,18 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     // add loading image
-    this.add.image(400, 200, 'logo');
+    this.add.image(1024, 768, 'loading');
 
     // add loading progress bar
-    let progressBar = this.add.graphics();
-    let progressBox = this.add.graphics();
-    progressBox.fillStyle(0x222222, 0.8);
+    const progressBar = this.add.graphics();
+    const progressBox = this.add.graphics();
+    progressBox.fillStyle(0xc10230, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
 
-    let { width } = this.cameras.main;
-    let { height } = this.cameras.main;
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
 
-    let loadingText = this.make.text({
+    const loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
       text: 'Loading...',
@@ -52,7 +47,7 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     loadingText.setOrigin(0.5, 0.5);
 
-    let percentText = this.make.text({
+    const percentText = this.make.text({
       x: width / 2,
       y: height / 2 - 5,
       text: '0%',
@@ -63,7 +58,7 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     percentText.setOrigin(0.5, 0.5);
 
-    let assetText = this.make.text({
+    const assetText = this.make.text({
       x: width / 2,
       y: height / 2 + 50,
       text: '',
@@ -106,12 +101,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('star', star);
     this.load.image('ground', platform);
     this.load.image('bomb', bomb);
-
     this.load.image('phaserLogo', phaserLogo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
-    this.load.image('button1', button1);
-    this.load.image('button2', button2);
     this.load.audio('bgMusic', bgMusic);
 
     this.load.spritesheet('dude', dude, {
