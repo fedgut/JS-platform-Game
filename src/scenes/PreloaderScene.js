@@ -5,17 +5,22 @@ import dude from '../assets/dude.png';
 import sky from '../assets/sky.png';
 import bomb from '../assets/bomb.png';
 import platform from '../assets/platform.png';
+import phaserLogo from '../assets/logo.png';
+import box from '../assets/ui/grey_box.png';
+import checkedBox from '../assets/ui/blue_boxCheckmark.png';
+import bgMusic from '../assets/TownTheme.mp3';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
-    this.fullyLoaded = false;
   }
 
   ready() {
-    if (this.fullyLoaded === true) {
-      this.scene.start('Title');
-    }
+    this.scene.start('Title');
+  }
+
+  timedEvent() {
+    this.time.delayedCall(2000, this.ready, [], this);
   }
 
   preload() {
@@ -87,18 +92,19 @@ export default class PreloaderScene extends Phaser.Scene {
         loadingText.destroy();
         percentText.destroy();
         assetText.destroy();
-        this.fullyLoaded = true;
-        this.ready();
+        this.timedEvent();
       }.bind(this),
     );
-
-    this.timedEvent = this.time.delayedCall(2000, this.ready, [], this);
 
     // preload game assets
     this.load.image('sky', sky);
     this.load.image('star', star);
     this.load.image('ground', platform);
     this.load.image('bomb', bomb);
+    this.load.image('phaserLogo', phaserLogo);
+    this.load.image('box', box);
+    this.load.image('checkedBox', checkedBox);
+    this.load.audio('bgMusic', bgMusic);
 
     this.load.spritesheet('dude', dude, {
       frameWidth: 32,
