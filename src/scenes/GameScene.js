@@ -1,10 +1,5 @@
 import Phaser from 'phaser';
 import ScoreLabel from '../ui/ScoreLabel';
-import star from '../assets/star.png';
-import dude from '../assets/dude.png';
-import sky from '../assets/sky.png';
-import bomb from '../assets/bomb.png';
-import platform from '../assets/platform.png';
 import BombSpawner from '../helpers/BombSpawner';
 
 const DUDE_KEY = 'dude';
@@ -14,7 +9,7 @@ const BOMB_KEY = 'bomb';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
-    super('game-scene');
+    super('Game');
 
     this.player = undefined;
     this.cursors = undefined;
@@ -115,18 +110,6 @@ export default class GameScene extends Phaser.Scene {
     this.add.existing(label);
 
     return label;
-  }
-
-  preload() {
-    this.load.image('sky', sky);
-    this.load.image('star', star);
-    this.load.image('ground', platform);
-    this.load.image('bomb', bomb);
-
-    this.load.spritesheet('dude', dude, {
-      frameWidth: 32,
-      frameHeight: 48,
-    });
   }
 
   create() {
