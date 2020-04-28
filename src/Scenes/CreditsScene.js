@@ -1,4 +1,4 @@
-
+/* eslint-disable no-unused-expressions */
 import Phaser from 'phaser';
 import config from '../Config/config';
 
@@ -12,7 +12,7 @@ export default class CreditsScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff',
     });
-    this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', {
+    this.madeByText = this.add.text(0, 0, 'Created By: Eduardo Gutierrez', {
       fontSize: '26px',
       fill: '#fff',
     });
@@ -22,6 +22,18 @@ export default class CreditsScene extends Phaser.Scene {
       config.width,
       config.height,
     );
+
+    this.backButton = this.add.sprite(100, 200, 'blueButton1').setInteractive();
+    this.placeButton(this.backButton, 1);
+    this.buttonText = this.add.text(0, 0, 'Back', {
+      fontSize: '32px',
+      fill: '#fff',
+    });
+    this.constructor.centerButtonText(this.buttonText, this.backButton);
+
+    this.backButton.on('pointerdown', () => {
+      this.scene.start('Title');
+    });
 
     Phaser.Display.Align.In.Center(this.creditsText, this.zone);
 
@@ -35,7 +47,7 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 3000,
       delay: 1000,
-      onComplete: function () {
+      onComplete: () => {
         this.destroy;
       },
     });
@@ -46,10 +58,26 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 8000,
       delay: 1000,
-      onComplete: function () {
-        this.madeByTween.destroy;
+      onComplete: () => {
+        this.madeByTween.destroy();
         this.scene.start('Title');
-      }.bind(this),
+      },
     });
+  }
+
+  placeButton(gameObject, offset = 0) {
+    Phaser.Display.Align.In.BottomLeft(
+      gameObject,
+      this.add.zone(
+        config.width / 2,
+        config.height / 2 - offset * 100,
+        config.width,
+        config.height,
+      ),
+    );
+  }
+
+  static centerButtonText(text, button) {
+    Phaser.Display.Align.In.Center(text, button);
   }
 }
