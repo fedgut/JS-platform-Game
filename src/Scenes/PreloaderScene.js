@@ -85,15 +85,14 @@ export default class PreloaderScene extends Phaser.Scene {
     // remove progress bar when complete
     this.load.on(
       'complete',
-      // eslint-disable-next-line prefer-arrow-callback
-      function () {
+      () => {
         this.progressBar.destroy();
         this.progressBox.destroy();
         this.loadingText.destroy();
         this.percentText.destroy();
         this.assetText.destroy();
         this.time.delayedCall(1500, this.ready, [], this);
-      }.bind(this),
+      },
     );
 
     // load assets needed in our game
