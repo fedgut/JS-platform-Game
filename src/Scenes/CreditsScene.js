@@ -12,10 +12,12 @@ export default class CreditsScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff',
     });
+
     this.madeByText = this.add.text(0, 0, 'Created By: Eduardo Gutierrez', {
       fontSize: '26px',
       fill: '#fff',
     });
+
     this.zone = this.add.zone(
       config.width / 2,
       config.height / 2,
@@ -29,10 +31,19 @@ export default class CreditsScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff',
     });
+
     this.constructor.centerButtonText(this.buttonText, this.backButton);
 
     this.backButton.on('pointerdown', () => {
       this.scene.start('Title');
+    });
+
+    this.input.on('pointerover', (event, gameObjects) => {
+      gameObjects[0].setTexture('blueButton2');
+    });
+
+    this.input.on('pointerout', (event, gameObjects) => {
+      gameObjects[0].setTexture('blueButton1');
     });
 
     Phaser.Display.Align.In.Center(this.creditsText, this.zone);

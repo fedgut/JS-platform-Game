@@ -91,7 +91,7 @@ export default class PreloaderScene extends Phaser.Scene {
         this.loadingText.destroy();
         this.percentText.destroy();
         this.assetText.destroy();
-        this.time.delayedCall(1500, this.ready, [], this);
+        this.time.delayedCall(1000, this.ready, [], this);
       },
     );
 
@@ -101,7 +101,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('phaserLogo', phaserLogo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
-    this.load.audio('bgMusic', bgMusic);
+    this.load.audio('bgMusic', [bgMusic]);
   }
 
   ready() {
