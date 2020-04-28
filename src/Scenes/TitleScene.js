@@ -15,14 +15,11 @@ export default class TitleScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff',
     });
-    this.centerButtonText(this.gameText, this.gameButton);
+    this.constructor.centerButtonText(this.gameText, this.gameButton);
 
-    this.gameButton.on(
-      'pointerdown',
-      function (pointer) {
-        this.scene.start('Game');
-      }.bind(this),
-    );
+    this.gameButton.on('pointerdown', () => {
+      this.scene.start('Game');
+    });
 
     // Options
     this.optionsButton = this.add
@@ -34,14 +31,11 @@ export default class TitleScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff',
     });
-    this.centerButtonText(this.optionsText, this.optionsButton);
+    this.constructor.centerButtonText(this.optionsText, this.optionsButton);
 
-    this.optionsButton.on(
-      'pointerdown',
-      function (pointer) {
-        this.scene.start('Options');
-      }.bind(this),
-    );
+    this.optionsButton.on('pointerdown', () => {
+      this.scene.start('Options');
+    });
 
     // Credits
     this.creditsButton = this.add
@@ -53,20 +47,17 @@ export default class TitleScene extends Phaser.Scene {
       fontSize: '32px',
       fill: '#fff',
     });
-    this.centerButtonText(this.creditsText, this.creditsButton);
+    this.constructor.centerButtonText(this.creditsText, this.creditsButton);
 
-    this.creditsButton.on(
-      'pointerdown',
-      function (pointer) {
-        this.scene.start('Credits');
-      }.bind(this),
-    );
+    this.creditsButton.on('pointerdown', () => {
+      this.scene.start('Credits');
+    });
 
-    this.input.on('pointerover', function (event, gameObjects) {
+    this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton2');
     });
 
-    this.input.on('pointerout', function (event, gameObjects) {
+    this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
     });
   }
@@ -83,7 +74,7 @@ export default class TitleScene extends Phaser.Scene {
     );
   }
 
-  centerButtonText(gameText, gameButton) {
+  static centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(gameText, gameButton);
   }
 }
