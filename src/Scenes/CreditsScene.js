@@ -56,7 +56,7 @@ export default class CreditsScene extends Phaser.Scene {
       targets: this.creditsText,
       y: -100,
       ease: 'Power1',
-      duration: 3000,
+      duration: 2000,
       delay: 1000,
       onComplete: () => {
         this.destroy;
@@ -67,10 +67,10 @@ export default class CreditsScene extends Phaser.Scene {
       targets: this.madeByText,
       y: -300,
       ease: 'Power1',
-      duration: 8000,
+      duration: 5000,
       delay: 1000,
       onComplete: () => {
-        this.madeByTween.destroy();
+        this.madeByTween.destroy;
         this.scene.start('Title');
       },
     });
