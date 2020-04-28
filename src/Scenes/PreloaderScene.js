@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import Phaser from 'phaser';
 
 import button1 from '../../assets/ui/blue_button02.png';
@@ -10,19 +11,15 @@ import bgMusic from '../../assets/TownTheme.mp3';
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
+    this.progressBar = undefined;
+    this.progressBox = undefined;
+    this.percentText = undefined;
+    this.assetText = undefined;
+    this.loadingText = undefined;
   }
 
   init() {
     this.readyCount = 0;
-  }
-
-  destroyPreloader() {
-    progressBar.destroy();
-    progressBox.destroy();
-    loadingText.destroy();
-    percentText.destroy();
-    assetText.destroy();
-    this.ready();
   }
 
   preload() {
@@ -30,14 +27,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.add.image(400, 200, 'logo');
 
     // display progress bar
-    var progressBar = this.add.graphics();
-    var progressBox = this.add.graphics();
-    progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
+    this.progressBar = this.add.graphics();
+    this.progressBox = this.add.graphics();
+    this.progressBox.fillStyle(0x222222, 0.8);
+    this.progressBox.fillRect(240, 270, 320, 50);
 
-    var width = this.cameras.main.width;
-    var height = this.cameras.main.height;
-    var loadingText = this.make.text({
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
+    this.loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
       text: 'Loading...',
@@ -46,9 +43,10 @@ export default class PreloaderScene extends Phaser.Scene {
         fill: '#ffffff',
       },
     });
-    loadingText.setOrigin(0.5, 0.5);
 
-    var percentText = this.make.text({
+    this.loadingText.setOrigin(0.5, 0.5);
+
+    this.percentText = this.make.text({
       x: width / 2,
       y: height / 2 - 5,
       text: '0%',
@@ -57,9 +55,10 @@ export default class PreloaderScene extends Phaser.Scene {
         fill: '#ffffff',
       },
     });
-    percentText.setOrigin(0.5, 0.5);
 
-    var assetText = this.make.text({
+    this.percentText.setOrigin(0.5, 0.5);
+
+    this.assetText = this.make.text({
       x: width / 2,
       y: height / 2 + 50,
       text: '',
@@ -68,30 +67,31 @@ export default class PreloaderScene extends Phaser.Scene {
         fill: '#ffffff',
       },
     });
-    assetText.setOrigin(0.5, 0.5);
+    this.assetText.setOrigin(0.5, 0.5);
 
     // update progress bar
-    this.load.on('progress', function (value) {
-      percentText.setText(parseInt(value * 100) + '%');
-      progressBar.clear();
-      progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+    this.load.on('progress', (value) => {
+      this.percentText.setText(`${parseInt(value * 100, 10)}%`);
+      this.progressBar.clear();
+      this.progressBar.fillStyle(0xffffff, 1);
+      this.progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
     // update file progress text
-    this.load.on('fileprogress', function (file) {
-      assetText.setText('Loading asset: ' + file.key);
+    this.load.on('fileprogress', (file) => {
+      this.assetText.setText(`Loading asset: ${file.key}`);
     });
 
     // remove progress bar when complete
     this.load.on(
       'complete',
+      // eslint-disable-next-line prefer-arrow-callback
       function () {
-        progressBar.destroy();
-        progressBox.destroy();
-        loadingText.destroy();
-        percentText.destroy();
-        assetText.destroy();
+        this.progressBar.destroy();
+        this.progressBox.destroy();
+        this.loadingText.destroy();
+        this.percentText.destroy();
+        this.assetText.destroy();
         this.ready();
       }.bind(this),
     );
