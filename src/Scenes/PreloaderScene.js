@@ -11,6 +11,8 @@ import bgMusic from '../../assets/HeroicDemise.mp3';
 
 // Loading game specific assets
 
+
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
