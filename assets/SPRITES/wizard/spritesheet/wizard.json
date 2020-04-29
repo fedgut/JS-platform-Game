@@ -1,0 +1,141 @@
+{ "frames": {
+   "wizard 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 1.ase": {
+    "frame": { "x": 81, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 2.ase": {
+    "frame": { "x": 162, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 3.ase": {
+    "frame": { "x": 243, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 4.ase": {
+    "frame": { "x": 324, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 5.ase": {
+    "frame": { "x": 405, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 6.ase": {
+    "frame": { "x": 486, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 7.ase": {
+    "frame": { "x": 567, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 8.ase": {
+    "frame": { "x": 648, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 9.ase": {
+    "frame": { "x": 729, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 10.ase": {
+    "frame": { "x": 810, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 11.ase": {
+    "frame": { "x": 891, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 12.ase": {
+    "frame": { "x": 972, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 13.ase": {
+    "frame": { "x": 1053, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "wizard 14.ase": {
+    "frame": { "x": 1134, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9",
+  "image": "/Users/luiszuno/Documents/ansimuz resources/ART PACKS/2019/gothicvania church/gothicvania church files/SPRITES/wizard/wizard.png",
+  "format": "RGBA8888",
+  "size": { "w": 1215, "h": 66 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 4, "direction": "forward" },
+   { "name": "Fire", "from": 5, "to": 14, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "body", "opacity": 255, "blendMode": "normal" },
+   { "name": "Fire", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

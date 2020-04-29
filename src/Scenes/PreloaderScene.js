@@ -1,12 +1,15 @@
 /* eslint-disable func-names */
 import Phaser from 'phaser';
 
+// Loading Generic Template Assets
 import button1 from '../../assets/ui/blue_button02.png';
 import button2 from '../../assets/ui/blue_button03.png';
 import phaserLogo from '../../assets/logo.png';
 import box from '../../assets/ui/grey_box.png';
 import checkedBox from '../../assets/ui/blue_boxCheckmark.png';
-import bgMusic from '../../assets/TownTheme.mp3';
+import bgMusic from '../../assets/HeroicDemise.mp3';
+
+// Loading game specific assets
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {

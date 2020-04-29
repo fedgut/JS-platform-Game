@@ -1,0 +1,43 @@
+{ "frames": {
+   "fireball 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 26, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 26, "h": 26 },
+    "sourceSize": { "w": 26, "h": 26 },
+    "duration": 100
+   },
+   "fireball 1.ase": {
+    "frame": { "x": 26, "y": 0, "w": 26, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 26, "h": 26 },
+    "sourceSize": { "w": 26, "h": 26 },
+    "duration": 100
+   },
+   "fireball 2.ase": {
+    "frame": { "x": 52, "y": 0, "w": 26, "h": 26 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 26, "h": 26 },
+    "sourceSize": { "w": 26, "h": 26 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9",
+  "image": "/Users/luiszuno/Documents/ansimuz resources/ART PACKS/2019/gothicvania church/gothicvania church files/SPRITES/fx/fireball-spritesheet/fireball.png",
+  "format": "RGBA8888",
+  "size": { "w": 78, "h": 26 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Fireball", "opacity": 255, "blendMode": "normal" },
+   { "name": "rays", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

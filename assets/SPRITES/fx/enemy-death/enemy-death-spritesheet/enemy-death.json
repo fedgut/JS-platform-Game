@@ -1,0 +1,90 @@
+{ "frames": {
+   "enemy-death 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 1.ase": {
+    "frame": { "x": 81, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 2.ase": {
+    "frame": { "x": 162, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 3.ase": {
+    "frame": { "x": 243, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 4.ase": {
+    "frame": { "x": 324, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 5.ase": {
+    "frame": { "x": 405, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 6.ase": {
+    "frame": { "x": 486, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 7.ase": {
+    "frame": { "x": 567, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 100
+   },
+   "enemy-death 8.ase": {
+    "frame": { "x": 648, "y": 0, "w": 81, "h": 66 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 66 },
+    "sourceSize": { "w": 81, "h": 66 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9",
+  "image": "/Users/luiszuno/Documents/ansimuz resources/ART PACKS/2019/gothicvania church/gothicvania church files/SPRITES/fx/enemy-death-spritesheet/enemy-death.png",
+  "format": "RGBA8888",
+  "size": { "w": 729, "h": 66 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Flattened", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
