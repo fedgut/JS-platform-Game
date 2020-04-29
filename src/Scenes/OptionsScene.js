@@ -7,8 +7,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
-    this.model = this.sys.game.globals.model;
-
+    // Create Sound Options Buttons
     this.text = this.add.text(300, 100, 'Options', {
       fontSize: 40,
     });
@@ -35,6 +34,7 @@ export default class OptionsScene extends Phaser.Scene {
       this.updateAudio();
     });
 
+    // Menu Button
     this.menuButton = new Button(
       this,
       400,
@@ -47,6 +47,7 @@ export default class OptionsScene extends Phaser.Scene {
     this.updateAudio();
   }
 
+  // Logic to turn on and off game audio in global state
   updateAudio() {
     if (this.model.musicOn === false) {
       this.musicButton.setTexture('box');

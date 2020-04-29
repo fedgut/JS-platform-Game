@@ -8,7 +8,7 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
-    // Game
+    // Game button
     this.gameButton = new Button(
       this,
       config.width / 2,
@@ -19,10 +19,18 @@ export default class TitleScene extends Phaser.Scene {
       'Game',
     );
 
-    // Options
-    this.optionsButton = new Button(this, config.width/2, config.height/2, 'blueButton1', 'blueButton2', 'Options', 'Options');
+    // Options button
+    this.optionsButton = new Button(
+      this,
+      config.width / 2,
+      config.height / 2,
+      'blueButton1',
+      'blueButton2',
+      'Options',
+      'Options',
+    );
 
-    // Credits
+    // Credits button
     this.creditsButton = new Button(
       this,
       config.width / 2,
@@ -33,29 +41,18 @@ export default class TitleScene extends Phaser.Scene {
       'Credits',
     );
 
+    // Add music to the game
     this.model = this.sys.game.globals.model;
-    this.bgMusic = this.sound.add('bgMusic', { volume: 0.05, loop: true });
+    this.bgMusic = this.sound.add('bgMusic', {
+      volume: 0.05,
+      loop: true,
+    });
     this.sys.game.globals.bgMusic = this.bgMusic;
 
+    // Play music depending on global music state
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
       this.bgMusic.play();
       this.model.bgMusicPlaying = true;
     }
-  }
-
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(
-        config.width / 2,
-        config.height / 2 - offset * 100,
-        config.width,
-        config.height,
-      ),
-    );
-  }
-
-  static centerButtonText(text, button) {
-    Phaser.Display.Align.In.Center(text, button);
   }
 }
