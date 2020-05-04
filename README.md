@@ -53,3 +53,9 @@ Game idea
  - Enemies walk, shamble or run towards orpheo. Contact with an enemy kills Orpheo
  
 
+## TODOS
+- CREATE PLAYER
+- CREATE TILEMAP
+- CREATE CREATE CURSORS
+- CREATE ENEMY
+- CREATE GAMELOGIC

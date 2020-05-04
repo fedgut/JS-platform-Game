@@ -8,10 +8,12 @@ import phaserLogo from '../../assets/logo.png';
 import box from '../../assets/ui/grey_box.png';
 import checkedBox from '../../assets/ui/blue_boxCheckmark.png';
 import bgMusic from '../../assets/HeroicDemise.mp3';
+import platform from '../../assets/Enviroment/tile.png';
+import player from '../../assets/player.png';
+import atlasJSON from '../../assets/atlas/atlas.json';
+import atlas from '../../assets/atlas/atlas.png';
 
 // Loading game specific assets
-
-
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -88,17 +90,14 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     // remove progress bar when complete
-    this.load.on(
-      'complete',
-      () => {
-        this.progressBar.destroy();
-        this.progressBox.destroy();
-        this.loadingText.destroy();
-        this.percentText.destroy();
-        this.assetText.destroy();
-        this.time.delayedCall(1000, this.ready, [], this);
-      },
-    );
+    this.load.on('complete', () => {
+      this.progressBar.destroy();
+      this.progressBox.destroy();
+      this.loadingText.destroy();
+      this.percentText.destroy();
+      this.assetText.destroy();
+      this.time.delayedCall(1000, this.ready, [], this);
+    });
 
     // load assets needed in our game
     this.load.image('blueButton1', button1);
@@ -106,7 +105,17 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('phaserLogo', phaserLogo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
+    this.load.image('platform', platform);
+
     this.load.audio('bgMusic', [bgMusic]);
+
+    this.load.atlas(
+      'atlas',
+      atlas,
+      atlasJSON,
+    );
+
+    this.load.image('player', player);
   }
 
   ready() {
