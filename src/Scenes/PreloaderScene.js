@@ -12,6 +12,7 @@ import platform from '../../assets/Enviroment/tile.png';
 import player from '../../assets/player.png';
 import atlasJSON from '../../assets/atlas/atlas.json';
 import atlas from '../../assets/atlas/atlas.png';
+import coin from '../../assets/Enviroment/coin.png';
 
 // Loading game specific assets
 
@@ -106,16 +107,16 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
     this.load.image('platform', platform);
+    this.load.image('player', player);
 
     this.load.audio('bgMusic', [bgMusic]);
 
-    this.load.atlas(
-      'atlas',
-      atlas,
-      atlasJSON,
-    );
+    this.load.spritesheet('coin', coin, {
+      frameWidth: 20,
+      frameHeight: 20,
+    });
 
-    this.load.image('player', player);
+    this.load.atlas('atlas', atlas, atlasJSON);
   }
 
   ready() {
