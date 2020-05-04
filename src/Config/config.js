@@ -11,4 +11,5 @@ export default {
     //   gravity: { y: 300 },
     // },
   },
+  // backgroundColor: 0xc10230,
 };
