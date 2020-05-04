@@ -1,4 +1,3 @@
-/* eslint-disable func-names */
 import Phaser from 'phaser';
 
 // Loading Generic Template Assets
@@ -97,7 +96,7 @@ export default class PreloaderScene extends Phaser.Scene {
       this.loadingText.destroy();
       this.percentText.destroy();
       this.assetText.destroy();
-      this.time.delayedCall(1000, this.ready, [], this);
+      this.time.delayedCall(500, this.ready, [], this);
     });
 
     // load assets needed in our game
@@ -107,13 +106,16 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
     this.load.image('platform', platform);
-    this.load.image('player', player);
 
     this.load.audio('bgMusic', [bgMusic]);
 
     this.load.spritesheet('coin', coin, {
       frameWidth: 20,
       frameHeight: 20,
+    });
+    this.load.spritesheet('player', player, {
+      frameWidth: 24,
+      frameHeight: 48,
     });
 
     this.load.atlas('atlas', atlas, atlasJSON);
