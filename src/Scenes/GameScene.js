@@ -21,10 +21,34 @@ export default class GameScene extends Phaser.Scene {
     this.config = config;
   }
 
+  createAnimations() {
+    this.anims.create({
+      key: 'run',
+      frames: this.anims.generateFrameNumbers('player', {
+        start: 0,
+        end: 1,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
+
+    // setting coin animation
+    this.anims.create({
+      key: 'rotate',
+      frames: this.anims.generateFrameNumbers('coin', {
+        start: 0,
+        end: 5,
+      }),
+      frameRate: 15,
+      yoyo: true,
+      repeat: -1,
+    });
+  }
+
   create() {
+    this.addedPlatforms = 0;
     // group with all active platforms.
     this.platforms = this.add.group({
-      // once a platform is removed, it's added to the pool
       removeCallback: (platform) => {
         platform.scene.platformPool.add(platform);
       },
@@ -32,9 +56,21 @@ export default class GameScene extends Phaser.Scene {
 
     // pool
     this.platformPool = this.add.group({
-      // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback: (platform) => {
         platform.scene.platforms.add(platform);
+      },
+    });
+
+    this.coinGroup = this.add.group({
+      removeCallback: (coin) => {
+        coin.scene.coinPool.add(coin);
+      },
+    });
+
+    // coin pool
+    this.coinPool = this.add.group({
+      removeCallback: (coin) => {
+        coin.scene.coinGroup.add(coin);
       },
     });
 
