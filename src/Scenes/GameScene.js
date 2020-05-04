@@ -12,10 +12,9 @@ export default class GameScene extends Phaser.Scene {
       platformHeightRange: [-10, 10],
       platformHeighScale: 10,
       platformVerticalLimit: [0.4, 0.8],
-      playerGravity: 900,
       jumpForce: 400,
       playerStartPosition: 200,
-      jumps: 2,
+      jumps: 5,
       coinPercent: 25,
       bombPercent: 25,
     };
@@ -50,12 +49,12 @@ export default class GameScene extends Phaser.Scene {
     );
 
     // adding the player;
-    this.player = this.physics.add.sprite(
+    this.player = new Player(
+      this,
       this.gameOptions.playerStartPosition,
       this.config.height / 2,
-      'player',
+      this.gameOptions.jumpForce,
     );
-    this.player.setGravityY(this.gameOptions.playerGravity);
 
     // setting collisions between the player and the platform group
     this.physics.add.collider(this.player, this.platforms);
@@ -68,7 +67,7 @@ export default class GameScene extends Phaser.Scene {
   addPlatform(platformWidth, posX, posY) {
     const platform = this.physics.add.sprite(posX, posY, 'platform');
     platform.setImmovable(true);
-    platform.setGravityY(0);
+    platform.setGravityY(-this.config.physics.arcade.gravity.y);
     platform.setVelocityX(
       Phaser.Math.Between(
         this.gameOptions.platformSpeedRange[0],
@@ -92,7 +91,7 @@ export default class GameScene extends Phaser.Scene {
       if (this.player.body.touching.down) {
         this.playerJumps = 0;
       }
-      this.player.setVelocityY(this.gameOptions.jumpForce * -1);
+      this.player.jump();
       this.playerJumps += 1;
     }
   }
@@ -126,16 +125,17 @@ export default class GameScene extends Phaser.Scene {
         this.gameOptions.platformSizeRange[0],
         this.gameOptions.platformSizeRange[1],
       );
-      const platformRandomHeight = this.gameOptions.platformHeighScale
-        * Phaser.Math.Between(
+      const platformRandomHeight =
+        this.gameOptions.platformHeighScale *
+        Phaser.Math.Between(
           this.gameOptions.platformHeightRange[0],
           this.gameOptions.platformHeightRange[1],
         );
       const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
-      const minPlatformHeight = this.config.height
-        * this.gameOptions.platformVerticalLimit[0];
-      const maxPlatformHeight = this.config.height
-        * this.gameOptions.platformVerticalLimit[1];
+      const minPlatformHeight =
+        this.config.height * this.gameOptions.platformVerticalLimit[0];
+      const maxPlatformHeight =
+        this.config.height * this.gameOptions.platformVerticalLimit[1];
       const nextPlatformHeight = Phaser.Math.Clamp(
         nextPlatformGap,
         minPlatformHeight,

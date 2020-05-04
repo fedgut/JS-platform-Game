@@ -7,9 +7,8 @@ export default {
   height: 512,
   physics: {
     default: 'arcade',
-    // arcade: {
-    //   gravity: { y: 300 },
-    // },
+    arcade: {
+      gravity: { y: 900 },
+    },
   },
-  // backgroundColor: 0xc10230,
 };

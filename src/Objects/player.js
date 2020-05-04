@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
 
 export default class Player extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y) {
+  constructor(scene, x, y, _jumpSpeed) {
     super(scene, x, y, 'atlas', 'idle1');
 
     this.scene = scene;
 
     this.speed = 70;
-    this.jumpSpeed = 200;
+    this.jumpSpeed = _jumpSpeed;
     this.isCrouching = false;
     this.isAttacking = false;
     this.isAirAttacking = false;
@@ -161,7 +161,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   jump() {
     this.body.velocity.y = -this.jumpSpeed;
-    this.scene.audioJump.play();
+    // this.scene.audioJump.play();
   }
 
   crouch() {
