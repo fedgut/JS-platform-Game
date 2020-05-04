@@ -24,7 +24,7 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     // group with all active platforms.
-    this.platformGroup = this.add.group({
+    this.platforms = this.add.group({
       // once a platform is removed, it's added to the pool
       removeCallback: (platform) => {
         platform.scene.platformPool.add(platform);
@@ -35,7 +35,7 @@ export default class GameScene extends Phaser.Scene {
     this.platformPool = this.add.group({
       // once a platform is removed from the pool, it's added to the active platforms group
       removeCallback: (platform) => {
-        platform.scene.platformGroup.add(platform);
+        platform.scene.platforms.add(platform);
       },
     });
 
@@ -58,7 +58,7 @@ export default class GameScene extends Phaser.Scene {
     this.player.setGravityY(this.gameOptions.playerGravity);
 
     // setting collisions between the player and the platform group
-    this.physics.add.collider(this.player, this.platformGroup);
+    this.physics.add.collider(this.player, this.platforms);
 
     // checking for input
     this.input.on('pointerdown', this.jump, this);
@@ -66,24 +66,16 @@ export default class GameScene extends Phaser.Scene {
 
   // the core of the script: platform are added from the pool or created on the fly
   addPlatform(platformWidth, posX, posY) {
-    let platform;
-    if (this.platformPool.getLength()) {
-      platform = this.platformPool.getFirst();
-      platform.x = posX;
-      platform.active = true;
-      platform.visible = true;
-      this.platformPool.remove(platform);
-    } else {
-      platform = this.physics.add.sprite(posX, posY, 'platform');
-      platform.setImmovable(true);
-      platform.setVelocityX(
-        Phaser.Math.Between(
-          this.gameOptions.platformSpeedRange[0],
-          this.gameOptions.platformSpeedRange[1],
-        ) * -1,
-      );
-      this.platformGroup.add(platform);
-    }
+    const platform = this.physics.add.sprite(posX, posY, 'platform');
+    platform.setImmovable(true);
+    platform.setGravityY(0);
+    platform.setVelocityX(
+      Phaser.Math.Between(
+        this.gameOptions.platformSpeedRange[0],
+        this.gameOptions.platformSpeedRange[1],
+      ) * -1,
+    );
+    this.platforms.add(platform);
     platform.displayWidth = platformWidth;
     this.nextPlatformDistance = Phaser.Math.Between(
       this.gameOptions.spawnRange[0],
@@ -112,10 +104,10 @@ export default class GameScene extends Phaser.Scene {
       this.scene.start('Game');
     }
     this.player.x = this.gameOptions.playerStartPosition;
-    // recycling platforms
+    // deleting platforms
     let minDistance = this.config.width;
     let rightmostPlatformHeight = 0;
-    this.platformGroup.getChildren().forEach((platform) => {
+    this.platforms.getChildren().forEach((platform) => {
       const platformDistance =
         this.config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
@@ -123,8 +115,8 @@ export default class GameScene extends Phaser.Scene {
         rightmostPlatformHeight = platform.y;
       }
       if (platform.x < -platform.displayWidth / 2) {
-        this.platformGroup.killAndHide(platform);
-        this.platformGroup.remove(platform);
+        this.platforms.killAndHide(platform);
+        this.platforms.remove(platform);
       }
     }, this);
 
