@@ -13,7 +13,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.isAirAttacking = false;
     this.isHurt = false;
 
-    // player animations
     scene.anims.create({
       key: 'player_idle',
       frames: scene.anims.generateFrameNames('atlas', {

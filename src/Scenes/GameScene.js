@@ -6,15 +6,15 @@ export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
     this.gameOptions = {
-      platformSpeedRange: [300, 400],
-      spawnRange: [80, 400],
-      platformSizeRange: [90, 300],
-      platformHeightRange: [-10, 10],
+      platformSpeedRange: [250, 350],
+      spawnRange: [80, 200],
+      platformSizeRange: [180, 250],
+      platformHeightRange: [-5, 5],
       platformHeighScale: 10,
       platformVerticalLimit: [0.4, 0.8],
       jumpForce: 400,
       playerStartPosition: 200,
-      jumps: 5,
+      jumps: 2,
       coinPercent: 25,
       bombPercent: 25,
     };
@@ -22,7 +22,6 @@ export default class GameScene extends Phaser.Scene {
     this.player = undefined;
     this.coins = undefined;
     this.platforms = undefined;
-    this.cursors = undefined;
   }
 
   createAnimations() {
@@ -34,6 +33,17 @@ export default class GameScene extends Phaser.Scene {
       }),
       frameRate: 15,
       yoyo: true,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'fireball',
+      frames: this.anims.generateFrameNames('atlas', {
+        prefix: 'fireball',
+        start: 1,
+        end: 3,
+      }),
+      frameRate: 20,
       repeat: -1,
     });
   }
@@ -61,7 +71,6 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.platforms);
 
     this.input.on('pointerdown', this.jump, this);
-    this.cursors = this.input.keyboard.createCursorKeys();
   }
 
   addPlatform(platformWidth, posX, posY) {
@@ -151,7 +160,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   update() {
-    // game over
     this.checkGameOver();
     this.initiateGame();
     this.platformHandler();
