@@ -17,7 +17,7 @@ export default class GameScene extends Phaser.Scene {
       playerStartPosition: 200,
       jumps: 2,
       coinPercent: 75,
-      bombPercent: 75,
+      bombPercent: 15,
     };
     this.config = config;
     this.player = undefined;
@@ -25,6 +25,7 @@ export default class GameScene extends Phaser.Scene {
     this.platforms = undefined;
     this.bombs = undefined;
     this.ScoreLabel = undefined;
+    this.explosions = undefined;
   }
 
   createScoreLabel(x, y, score) {
@@ -192,8 +193,11 @@ export default class GameScene extends Phaser.Scene {
     this.ScoreLabel.remove(20);
     this.bombs.remove(bomb);
     this.player.isHurt = true;
-    const explode = this.add.sprite(bomb.x, bomb.y, 'explode');
+    const explode = this.physics.add.sprite(bomb.x, bomb.y, 'explode');
+    explode.setGravityY(bomb.body.gravity.y);
+    explode.setVelocityX(bomb.body.velocity.x);
     explode.anims.play('explode');
+    this.explosions.add(explode);
     this.tweens.add({
       targets: bomb,
       y: bomb.y - 1,
@@ -203,6 +207,7 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       onComplete: () => {
         this.bombs.killAndHide(bomb);
+        this.explosions.killAndHide(explode);
         this.player.isHurt = false;
       },
     });
@@ -212,6 +217,7 @@ export default class GameScene extends Phaser.Scene {
     this.platforms = this.add.group();
     this.coins = this.add.group();
     this.bombs = this.add.group();
+    this.explosions = this.add.group();
 
     this.playerJumps = 0;
     this.ScoreLabel = this.createScoreLabel(16, 15, 0);
