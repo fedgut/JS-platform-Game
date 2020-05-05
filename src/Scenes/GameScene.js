@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import config from '../Config/config';
 import Player from '../Objects/player';
+import ScoreLabel from './ui/scoreLabel';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -15,13 +16,24 @@ export default class GameScene extends Phaser.Scene {
       jumpForce: 400,
       playerStartPosition: 200,
       jumps: 2,
-      coinPercent: 25,
+      coinPercent: 75,
       bombPercent: 25,
     };
     this.config = config;
     this.player = undefined;
     this.coins = undefined;
     this.platforms = undefined;
+    this.bombs = undefined;
+    this.ScoreLabel = undefined;
+  }
+
+  createScoreLabel(x, y, score) {
+    const style = { fontSize: '32px', fill: '#FFF' };
+    const label = new ScoreLabel(this, x, y, score, style);
+
+    this.add.existing(label);
+
+    return label;
   }
 
   createAnimations() {
@@ -37,7 +49,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: 'fireball',
+      key: 'firebomb',
       frames: this.anims.generateFrameNames('atlas', {
         prefix: 'fireball',
         start: 1,
@@ -46,31 +58,6 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1,
     });
-  }
-
-  create() {
-    this.addedPlatforms = 0;
-
-    this.platforms = this.add.group();
-    this.coins = this.add.group();
-    this.playerJumps = 0;
-
-    this.addPlatform(
-      this.config.width,
-      this.config.width / 2,
-      this.config.height * this.gameOptions.platformVerticalLimit[1],
-    );
-
-    this.player = new Player(
-      this,
-      this.gameOptions.playerStartPosition,
-      this.config.height / 2,
-      this.gameOptions.jumpForce,
-    );
-
-    this.physics.add.collider(this.player, this.platforms);
-
-    this.input.on('pointerdown', this.jump, this);
   }
 
   addPlatform(platformWidth, posX, posY) {
@@ -89,6 +76,21 @@ export default class GameScene extends Phaser.Scene {
       this.gameOptions.spawnRange[0],
       this.gameOptions.spawnRange[1],
     );
+    if (Phaser.Math.Between(1, 100) <= this.gameOptions.coinPercent) {
+      const coin = this.physics.add.sprite(posX, posY - 96, 'coin');
+      coin.setImmovable(true);
+      coin.setGravityY(-this.config.physics.arcade.gravity.y);
+      coin.setVelocityX(platform.body.velocity.x);
+      coin.anims.play('rotate');
+      this.coins.add(coin);
+    }
+    if (Phaser.Math.Between(1, 100) <= this.gameOptions.bombPercent) {
+      const bomb = this.physics.add.sprite(posX + 25, posY - 25, 'firebomb');
+      bomb.setGravityY(-this.config.physics.arcade.gravity.y - 10);
+      bomb.setVelocityX(platform.body.velocity.x);
+      bomb.anims.play('firebomb');
+      this.bombs.add(bomb);
+    }
   }
 
   jump() {
@@ -157,6 +159,83 @@ export default class GameScene extends Phaser.Scene {
         nextPlatformHeight,
       );
     }
+  }
+
+  collectCoin(player, coin) {
+    this.ScoreLabel.add(10);
+    this.coins.remove(coin);
+    this.tweens.add({
+      targets: coin,
+      y: coin.y - 100,
+      alpha: 0,
+      duration: 800,
+      ease: 'Cubic.easeOut',
+      callbackScope: this,
+      onComplete: () => {
+        this.coins.killAndHide(coin);
+      },
+    });
+  }
+
+  catchFireball(player, bomb) {
+    this.ScoreLabel.remove(30);
+    this.bombs.remove(bomb);
+    this.tweens.add({
+      targets: bomb,
+      y: bomb.y - 100,
+      alpha: 0,
+      duration: 800,
+      ease: 'Cubic.easeOut',
+      callbackScope: this,
+      onComplete: () => {
+        this.bombs.killAndHide(bomb);
+      },
+    });
+    this.player.isHurt = true;
+    this.time.delayedCall(500, (this.player.isHurt = false), [], this);
+  }
+
+  create() {
+    this.platforms = this.add.group();
+    this.coins = this.add.group();
+    this.bombs = this.add.group();
+
+    this.playerJumps = 0;
+    this.ScoreLabel = this.createScoreLabel(16, 15, 0);
+
+    this.createAnimations();
+
+    this.addPlatform(
+      this.config.width,
+      this.config.width / 2,
+      this.config.height * this.gameOptions.platformVerticalLimit[1],
+    );
+
+    this.player = new Player(
+      this,
+      this.gameOptions.playerStartPosition,
+      this.config.height / 2,
+      this.gameOptions.jumpForce,
+    );
+
+    this.physics.add.collider(this.player, this.platforms);
+    this.physics.add.overlap(
+      this.player,
+      this.coins,
+      this.collectCoin,
+      null,
+      this,
+    );
+
+    this.physics.add.overlap(
+      this.player,
+      this.bombs,
+      this.catchFireball,
+      null,
+      this,
+    );
+
+    this.input.on('pointerdown', this.jump, this);
   }
 
   update() {

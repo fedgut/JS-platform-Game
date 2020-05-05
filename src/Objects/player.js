@@ -220,6 +220,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
+  resetHurt() {
+    this.isHurt = false;
+  }
+
   update() {
     this.animationsManager();
 
