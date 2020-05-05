@@ -7,39 +7,41 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
     this.model = this.sys.game.globals.model;
     // Create Sound Options Buttons
-    this.text = this.add.text(300, 100, 'Options', {
+    this.text = this.add.text(300 + 300, 100 + 100, 'Options', {
       fontSize: 40,
     });
-    this.musicButton = this.add.image(200, 200, 'Box');
-    this.musicText = this.add.text(250, 190, 'Music Enabled', {
+    this.musicButton = this.add.image(width / 2 - 100, 200 + 150, 'Box');
+    this.musicText = this.add.text(width / 2 - 50, 190 + 150, 'Music Enabled', {
       fontSize: 24,
     });
 
-    this.soundButton = this.add.image(200, 300, 'checkedBox');
-    this.soundText = this.add.text(250, 290, 'Sound Enabled', {
+    this.hardButton = this.add.image(width / 2 - 100, 300 + 150, 'checkedBox');
+    this.hardText = this.add.text(width / 2 - 50, 290 + 150, 'Hard Mode', {
       fontSize: 24,
     });
 
     this.musicButton.setInteractive();
-    this.soundButton.setInteractive();
+    this.hardButton.setInteractive();
 
     this.musicButton.on('pointerdown', () => {
       this.model.musicOn = !this.model.musicOn;
       this.updateAudio();
     });
 
-    this.soundButton.on('pointerdown', () => {
-      this.model.soundOn = !this.model.soundOn;
+    this.hardButton.on('pointerdown', () => {
+      this.model.hardMode = !this.model.hardMode;
       this.updateAudio();
     });
 
     // Menu Button
     this.menuButton = new Button(
       this,
-      400,
-      500,
+      400 + 300,
+      100 + 500,
       'blueButton1',
       'blueButton2',
       'Menu',
@@ -62,10 +64,10 @@ export default class OptionsScene extends Phaser.Scene {
       }
     }
 
-    if (this.model.soundOn === false) {
-      this.soundButton.setTexture('box');
+    if (this.model.hardMode === false) {
+      this.hardButton.setTexture('box');
     } else {
-      this.soundButton.setTexture('checkedBox');
+      this.hardButton.setTexture('checkedBox');
     }
   }
 }

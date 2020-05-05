@@ -2,7 +2,7 @@
 
 export default class Model {
   constructor() {
-    this._soundOn = true;
+    this._hardMode = true;
     this._musicOn = false;
     this._bgMusicPlaying = false;
   }
@@ -15,12 +15,12 @@ export default class Model {
     return this._musicOn;
   }
 
-  set soundOn(value) {
-    this._soundOn = value;
+  set hardMode(value) {
+    this._hardMode = value;
   }
 
-  get soundOn() {
-    return this._soundOn;
+  get hardMode() {
+    return this._hardMode;
   }
 
   set bgMusicPlaying(value) {

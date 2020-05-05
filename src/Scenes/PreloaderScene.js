@@ -29,17 +29,17 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
-    this.add.image(400, 200, 'logo');
+    // add logo image (removed while I get a nice personal logo)
+    // this.add.image(400, 200, 'logo');
 
     // display progress bar
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
     this.progressBar = this.add.graphics();
     this.progressBox = this.add.graphics();
     this.progressBox.fillStyle(0x222222, 0.8);
-    this.progressBox.fillRect(240, 270, 320, 50);
+    this.progressBox.fillRect(510, 470, 320, 50);
 
-    const { width } = this.cameras.main;
-    const { height } = this.cameras.main;
     this.loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
@@ -80,7 +80,7 @@ export default class PreloaderScene extends Phaser.Scene {
       this.percentText.setText(`${parseInt(value * 100, 10)}%`);
       this.progressBar.clear();
       this.progressBar.fillStyle(0xffffff, 1);
-      this.progressBar.fillRect(250, 280, 300 * value, 30);
+      this.progressBar.fillRect(520, 480, 300 * value, 30);
     });
 
     // update file progress text
