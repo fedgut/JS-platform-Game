@@ -17,7 +17,7 @@ export default class GameScene extends Phaser.Scene {
       playerStartPosition: 200,
       jumps: 2,
       coinPercent: 75,
-      bombPercent: 25,
+      bombPercent: 75,
     };
     this.config = config;
     this.player = undefined;
@@ -55,8 +55,19 @@ export default class GameScene extends Phaser.Scene {
         start: 1,
         end: 3,
       }),
-      frameRate: 20,
+      frameRate: 10,
       repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'explode',
+      frames: this.anims.generateFrameNames('atlas', {
+        prefix: 'enemy-death',
+        start: 3,
+        end: 9,
+      }),
+      frameRate: 10,
+      repeat: 0,
     });
   }
 
@@ -178,21 +189,23 @@ export default class GameScene extends Phaser.Scene {
   }
 
   catchFireball(player, bomb) {
-    this.ScoreLabel.remove(30);
+    this.ScoreLabel.remove(20);
     this.bombs.remove(bomb);
+    this.player.isHurt = true;
+    const explode = this.add.sprite(bomb.x, bomb.y, 'explode');
+    explode.anims.play('explode');
     this.tweens.add({
       targets: bomb,
-      y: bomb.y - 100,
+      y: bomb.y - 1,
       alpha: 0,
-      duration: 800,
+      duration: 1000,
       ease: 'Cubic.easeOut',
       callbackScope: this,
       onComplete: () => {
         this.bombs.killAndHide(bomb);
+        this.player.isHurt = false;
       },
     });
-    this.player.isHurt = true;
-    this.time.delayedCall(500, (this.player.isHurt = false), [], this);
   }
 
   create() {
