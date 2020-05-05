@@ -8,7 +8,6 @@ import box from '../../assets/ui/grey_box.png';
 import checkedBox from '../../assets/ui/blue_boxCheckmark.png';
 import bgMusic from '../../assets/HeroicDemise.mp3';
 import platform from '../../assets/Enviroment/tile.png';
-import player from '../../assets/player.png';
 import atlasJSON from '../../assets/atlas/atlas.json';
 import atlas from '../../assets/atlas/atlas.png';
 import coin from '../../assets/Enviroment/coin.png';
@@ -112,10 +111,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.spritesheet('coin', coin, {
       frameWidth: 20,
       frameHeight: 20,
-    });
-    this.load.spritesheet('player', player, {
-      frameWidth: 24,
-      frameHeight: 48,
     });
 
     this.load.atlas('atlas', atlas, atlasJSON);
