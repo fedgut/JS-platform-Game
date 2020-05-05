@@ -15,7 +15,7 @@ export default class GameScene extends Phaser.Scene {
       platformVerticalLimit: [0.4, 0.8],
       jumpForce: 400,
       playerStartPosition: 200,
-      jumps: 2,
+      jumps: 3,
       coinPercent: 75,
       bombPercent: 15,
     };
@@ -226,7 +226,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.addPlatform(
       this.config.width,
-      this.config.width / 2,
+      this.config.width / 4,
       this.config.height * this.gameOptions.platformVerticalLimit[1],
     );
 
