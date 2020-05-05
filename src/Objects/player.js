@@ -125,7 +125,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     // physics
     scene.physics.world.enableBody(this);
 
-
     // set size
     this.setOrigin(0.5, 0.5);
     this.body.setSize(12, 44);
@@ -213,12 +212,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
       return;
     }
 
-    if (this.body.onFloor()) {
-      if (this.body.velocity.x == 0) {
-        this.play('player_idle', true);
-      } else {
-        this.play('player_walk', true);
-      }
+    if (this.body.touching.down) {
+      this.play('player_walk', true);
     } else if (this.body.velocity.y > 0) {
       this.play('player_fall', true);
     } else {
