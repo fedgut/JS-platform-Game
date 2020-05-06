@@ -130,14 +130,16 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.body.offset.y = 16;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   create() {}
 
+  // eslint-disable-next-line no-unused-vars
   animComplete(animation, frame) {
     // reset flags when the animations complete
     if (
-      animation.key === 'player_kick' ||
-      animation.key === 'player_punch' ||
-      animation.key === 'player_crouch_kick'
+      animation.key === 'player_kick'
+      || animation.key === 'player_punch'
+      || animation.key === 'player_crouch_kick'
     ) {
       this.isAttacking = false;
     }

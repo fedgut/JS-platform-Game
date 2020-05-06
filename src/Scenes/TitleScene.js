@@ -21,7 +21,6 @@ export default class TitleScene extends Phaser.Scene {
         'Play',
         'GameHard',
       );
-
     } else if (this.model.hardMode === false) {
       this.gameButton = new Button(
         this,

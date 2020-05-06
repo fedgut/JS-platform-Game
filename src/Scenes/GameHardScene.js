@@ -108,8 +108,8 @@ export default class GameHardScene extends Phaser.Scene {
 
   jump() {
     if (
-      this.player.body.touching.down ||
-      (this.playerJumps > 0 && this.playerJumps < this.gameOptions.jumps)
+      this.player.body.touching.down
+      || (this.playerJumps > 0 && this.playerJumps < this.gameOptions.jumps)
     ) {
       if (this.player.body.touching.down) {
         this.playerJumps = 0;
@@ -133,8 +133,7 @@ export default class GameHardScene extends Phaser.Scene {
     let minDistance = this.config.width;
     let rightmostPlatformHeight = 0;
     this.platforms.getChildren().forEach((platform) => {
-      const platformDistance =
-        this.config.width - platform.x - platform.displayWidth / 2;
+      const platformDistance = this.config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
         rightmostPlatformHeight = platform.y;
@@ -150,17 +149,14 @@ export default class GameHardScene extends Phaser.Scene {
         this.gameOptions.platformSizeRange[0],
         this.gameOptions.platformSizeRange[1],
       );
-      const platformRandomHeight =
-        this.gameOptions.platformHeighScale *
-        Phaser.Math.Between(
+      const platformRandomHeight = this.gameOptions.platformHeighScale
+        * Phaser.Math.Between(
           this.gameOptions.platformHeightRange[0],
           this.gameOptions.platformHeightRange[1],
         );
       const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
-      const minPlatformHeight =
-        this.config.height * this.gameOptions.platformVerticalLimit[0];
-      const maxPlatformHeight =
-        this.config.height * this.gameOptions.platformVerticalLimit[1];
+      const minPlatformHeight = this.config.height * this.gameOptions.platformVerticalLimit[0];
+      const maxPlatformHeight = this.config.height * this.gameOptions.platformVerticalLimit[1];
       const nextPlatformHeight = Phaser.Math.Clamp(
         nextPlatformGap,
         minPlatformHeight,
