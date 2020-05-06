@@ -24,14 +24,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.loadingText = undefined;
   }
 
-  init() {
-    this.readyCount = 0;
-  }
-
   preload() {
-    // add logo image (removed while I get a nice personal logo)
-    // this.add.image(400, 200, 'logo');
-
     // display progress bar
     const { width } = this.cameras.main;
     const { height } = this.cameras.main;
