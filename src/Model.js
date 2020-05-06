@@ -2,7 +2,7 @@
 
 export default class Model {
   constructor() {
-    this._hardMode = true;
+    this._hardMode = false;
     this._musicOn = false;
     this._bgMusicPlaying = false;
   }

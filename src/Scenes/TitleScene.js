@@ -8,16 +8,31 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
+    this.model = this.sys.game.globals.model;
+
     // Game button
-    this.gameButton = new Button(
-      this,
-      config.width / 2,
-      config.height / 2 - 100,
-      'blueButton1',
-      'blueButton2',
-      'Play',
-      'Game',
-    );
+    if (this.model.hardMode === true) {
+      this.gameButton = new Button(
+        this,
+        config.width / 2,
+        config.height / 2 - 100,
+        'blueButton1',
+        'blueButton2',
+        'Play',
+        'GameHard',
+      );
+
+    } else if (this.model.hardMode === false) {
+      this.gameButton = new Button(
+        this,
+        config.width / 2,
+        config.height / 2 - 100,
+        'blueButton1',
+        'blueButton2',
+        'Play',
+        'Game',
+      );
+    }
 
     // Options button
     this.optionsButton = new Button(
@@ -43,6 +58,7 @@ export default class TitleScene extends Phaser.Scene {
 
     // Add music to the game
     this.model = this.sys.game.globals.model;
+
     this.bgMusic = this.sound.add('bgMusic', {
       volume: 0.2,
       loop: true,

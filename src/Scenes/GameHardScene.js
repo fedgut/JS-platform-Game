@@ -3,21 +3,21 @@ import config from '../Config/config';
 import Player from '../Objects/player';
 import ScoreLabel from './ui/scoreLabel';
 
-export default class GameScene extends Phaser.Scene {
+export default class GameHardScene extends Phaser.Scene {
   constructor() {
-    super('Game');
+    super('GameHard');
     this.gameOptions = {
-      platformSpeedRange: [250, 350],
-      spawnRange: [80, 200],
-      platformSizeRange: [180, 250],
+      platformSpeedRange: [250, 400],
+      spawnRange: [80, 230],
+      platformSizeRange: [180, 220],
       platformHeightRange: [-5, 5],
       platformHeighScale: 10,
       platformVerticalLimit: [0.4, 0.8],
-      jumpForce: 400,
+      jumpForce: 450,
       playerStartPosition: 200,
-      jumps: 3,
+      jumps: 2,
       coinPercent: 75,
-      bombPercent: 15,
+      bombPercent: 25,
     };
     this.config = config;
     this.player = undefined;
@@ -121,7 +121,7 @@ export default class GameScene extends Phaser.Scene {
 
   checkGameOver() {
     if (this.player.y > this.config.height) {
-      this.scene.start('Game');
+      this.scene.start('GameHard');
     }
   }
 
@@ -175,7 +175,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   collectCoin(player, coin) {
-    this.ScoreLabel.add(10);
+    this.ScoreLabel.add(25);
     this.coins.remove(coin);
     this.tweens.add({
       targets: coin,
@@ -237,6 +237,7 @@ export default class GameScene extends Phaser.Scene {
       this.config.height / 2,
       this.gameOptions.jumpForce,
     );
+    this.player.setTint(0xff0000);
 
     this.physics.add.collider(this.player, this.platforms);
     this.physics.add.overlap(

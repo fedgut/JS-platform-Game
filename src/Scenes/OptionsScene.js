@@ -8,7 +8,6 @@ export default class OptionsScene extends Phaser.Scene {
 
   create() {
     const { width } = this.cameras.main;
-    const { height } = this.cameras.main;
     this.model = this.sys.game.globals.model;
     // Create Sound Options Buttons
     this.text = this.add.text(300 + 300, 100 + 100, 'Options', {
