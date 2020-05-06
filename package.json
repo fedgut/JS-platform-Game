@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open",
-    "serve": "http-server dist/index.html --port=80"
+    "dev": "webpack-dev-server --config webpack/base.js --open",
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "terser-webpack-plugin": "^2.2.1"
   },
   "dependencies": {
+    "http-server": "^0.12.3",
     "phaser": "^3.20.1"
   },
   "bugs": {
