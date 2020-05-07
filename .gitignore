@@ -5,6 +5,7 @@
 
 node_modules/
 dist/bundle.min.js.LICENSE
+dist/
 # User-specific files
 *.rsuser
 *.suo

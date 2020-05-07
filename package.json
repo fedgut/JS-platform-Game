@@ -6,7 +6,6 @@
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
     "dev": "webpack-dev-server --config webpack/base.js --open",
-    "prod": "webpack-dev-server --config webpack/prod.js --open",
     "start": "http-server dist"
   },
   "repository": {
@@ -31,13 +30,13 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "html-server": "^0.1.1",
-    "phaser": "^3.20.1",
-    "webpack": "^4.41.2",
-    "webpack-merge": "^4.2.2",
-    "terser-webpack-plugin": "^2.2.1",
     "clean-webpack-plugin": "^3.0.0",
-    "html-webpack-plugin": "^3.2.0"
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.12.3",
+    "phaser": "^3.20.1",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-merge": "^4.2.2"
   },
   "bugs": {
     "url": "https://github.com/fedgut/js_capstone_platform_game/issues"
