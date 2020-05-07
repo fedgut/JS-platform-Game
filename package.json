@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open",
-    "serve": "http-server dist/index.html --port=80"
+    "dev": "webpack-dev-server --config webpack/base.js --open",
+    "prod": "webpack-dev-server --config webpack/prod.js --open"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,6 @@
   "dependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "http-server": "^0.12.3",
     "phaser": "^3.20.1",
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
