@@ -27,7 +27,7 @@ Don't Know where to start? Peek into this entry level tutorials:
  - [Install NPM](https://www.npmjs.com/get-npm)
 
 ## Play Live Version Without installing anything!
-  - [Live version in Heroku PENDING]()
+  - [Live version in Heroku](https://thawing-beyond-66641.herokuapp.com/)
 
 ## Aknowldgments
 
