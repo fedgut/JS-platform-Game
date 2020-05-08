@@ -10,7 +10,7 @@ import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 
-class Game extends Phaser.Game {
+export default class Game extends Phaser.Game {
   constructor() {
     super(config);
     const model = new Model();
