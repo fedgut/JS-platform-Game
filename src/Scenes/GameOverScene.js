@@ -26,7 +26,6 @@ export default class GameOver extends Phaser.Scene {
     }
 
     postScores(user, score);
-    getScores();
 
     // Menu Button
     this.menuButton = new Button(
