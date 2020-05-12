@@ -2,9 +2,9 @@ import Phaser from 'phaser';
 import { postScores, getScores } from '../API/Scorehandler';
 import Button from '../Objects/Buttons';
 
-export default class GameOver extends Phaser.Scene {
+export default class GameOverHard extends Phaser.Scene {
   constructor() {
-    super('GameOver');
+    super('GameOverHard');
   }
 
   create() {
@@ -36,7 +36,7 @@ export default class GameOver extends Phaser.Scene {
       'blueButton1',
       'blueButton2',
       'Play Again',
-      'Game',
+      'GameHard',
     );
   }
 }
