@@ -9,41 +9,33 @@ async function getScores() {
         },
       },
     );
-    return response;
+    const obj = await response.json();
+    const arr = await obj.result;
+    return arr;
   } catch (e) {
     return e;
   }
 }
 
-function serveHighScore() {
-  const data = [];
+async function renderScores(data) {
   const table = document.getElementById('table');
-
-  getScores()
-    .then((response) => {
-      response.json().then((scores) => data.push(...scores.result));
-    })
-    .then(data.sort((a, b) => b.score - a.score));
-  
-   for (let i = 0; i < 10; i += 1) {
-     const { user } = data[i];
-     const { score } = data[i];
-     const tr = document.createElement('tr');
-     const userCell = document.createElement('td');
-     const scoreCell = document.createElement('td');
-     userCell.textContent = user;
-     scoreCell.textContent = score;
-     tr.appendChild(userCell);
-     tr.appendChild(scoreCell);
-     table.appendChild(tr);
-   }
+  for (let i = 0; i < 10; i += 1) {
+    const { user } = data[i];
+    const { score } = data[i];
+    const tr = document.createElement('tr');
+    const userCell = document.createElement('td');
+    const scoreCell = document.createElement('td');
+    userCell.textContent = user;
+    scoreCell.textContent = score;
+    tr.appendChild(userCell);
+    tr.appendChild(scoreCell);
+    table.appendChild(tr);
+  }
 }
 
-  async function populate() {
-    try {
-      const data = await 
-    }
-  }
- 
+async function whatevs() {
+  const data = await getScores();
+  return data;
+}
 
-serveHighScore();
+whatevs();
