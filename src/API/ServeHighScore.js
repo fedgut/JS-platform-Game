@@ -17,11 +17,19 @@ async function getScores() {
   }
 }
 
-async function renderScores(data) {
+async function sortScores(arr) {
+  const data = await arr.sort((a, b) => b.score - a.score);
+  return data;
+}
+
+async function renderScores() {
+  const scores = await getScores();
+  const sortedScores = await sortScores(scores);
+
   const table = document.getElementById('table');
   for (let i = 0; i < 10; i += 1) {
-    const { user } = data[i];
-    const { score } = data[i];
+    const { user } = sortedScores[i];
+    const { score } = sortedScores[i];
     const tr = document.createElement('tr');
     const userCell = document.createElement('td');
     const scoreCell = document.createElement('td');
@@ -33,9 +41,4 @@ async function renderScores(data) {
   }
 }
 
-async function whatevs() {
-  const data = await getScores();
-  return data;
-}
-
-whatevs();
+renderScores();
