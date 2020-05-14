@@ -10,7 +10,7 @@ import TitleScene from './Scenes/TitleScene';
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import GameOverScene from './Scenes/GameOverScene';
-import GameOverHardScene from './Scenes/GameOverHardScene';
+import HighScoresScene from './Scenes/HighScoresScene';
 
 export default class Game extends Phaser.Game {
   constructor() {
@@ -25,7 +25,7 @@ export default class Game extends Phaser.Game {
     this.scene.add('Game', GameScene);
     this.scene.add('GameHard', GameHardScene);
     this.scene.add('GameOver', GameOverScene);
-    this.scene.add('GameOverHard', GameOverHardScene);
+    this.scene.add('HighScores', HighScoresScene);
     this.scene.start('Boot');
   }
 }

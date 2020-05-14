@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
-import { postScores, getScores } from '../API/Scorehandler';
+import postScores from '../API/PostScore';
 import Button from '../Objects/Buttons';
+import config from '../Config/config';
 
 export default class GameOver extends Phaser.Scene {
   constructor() {
@@ -25,17 +26,39 @@ export default class GameOver extends Phaser.Scene {
       });
     }
 
+    this.zone = this.add.zone(
+      config.width / 2,
+      config.height / 2,
+      config.width,
+      config.height,
+    );
+
+    Phaser.Display.Align.In.Center(this.text, this.zone);
+
+    Phaser.Display.Align.In.Center(this.text, this.zone);
+
     postScores(user, score);
 
-    // Menu Button
-    this.menuButton = new Button(
+    // Ttitle Button
+    this.TitleButton = new Button(
       this,
       675,
       500,
       'blueButton1',
       'blueButton2',
-      'Play Again',
-      'Game',
+      'Title',
+      'Title',
+    );
+
+    // See Scores Button
+    this.ScoresButton = new Button(
+      this,
+      675,
+      575,
+      'blueButton1',
+      'blueButton2',
+      'HighScores',
+      'HighScores',
     );
   }
 }
