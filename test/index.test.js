@@ -4,7 +4,6 @@ import Model from '../src/Model';
 import config from '../src/Config/config';
 import GameScene from '../src/Scenes/GameScene';
 import GameHardScene from '../src/Scenes/GameHardScene';
-import BootScene from '../src/Scenes/BootScene';
 import PreloaderScene from '../src/Scenes/PreloaderScene';
 import TitleScene from '../src/Scenes/TitleScene';
 import OptionsScene from '../src/Scenes/OptionsScene';
@@ -15,7 +14,6 @@ export default class Game extends Phaser.Game {
     super(config);
     const model = new Model();
     this.globals = { model, bgMusic: null };
-    this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
     this.scene.add('Options', OptionsScene);
