@@ -6,7 +6,7 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.html('nameform', 'assets/loginform.html');
+    this.load.html('nameform', 'HTMLs/loginform.html');
   }
 
   create() {

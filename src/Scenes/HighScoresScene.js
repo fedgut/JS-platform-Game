@@ -8,7 +8,7 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.html('scoretable', 'assets/scoretable.html');
+    this.load.html('scoretable', 'HTMLs/scoretable.html');
   }
 
   create() {
