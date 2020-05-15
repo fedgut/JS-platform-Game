@@ -110,7 +110,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         start: 1,
         end: 6,
       }),
-      frameRate: 10,
+      frameRate: 20,
       repeat: -1,
     });
 
