@@ -11,6 +11,7 @@ export default class GameOver extends Phaser.Scene {
   create() {
     const score = localStorage.getItem('score');
     const user = JSON.parse(localStorage.getItem('user'));
+    postScores(user, score);
 
     this.text = this.add.text(450, 200, `Game Over! Score: ${score}`, {
       fontSize: 40,
@@ -36,8 +37,6 @@ export default class GameOver extends Phaser.Scene {
     Phaser.Display.Align.In.Center(this.text, this.zone);
 
     Phaser.Display.Align.In.Center(this.text, this.zone);
-
-    postScores(user, score);
 
     // Ttitle Button
     this.TitleButton = new Button(
