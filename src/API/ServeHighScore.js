@@ -22,7 +22,7 @@ async function sortScores(arr) {
   return data;
 }
 
-export default async function renderScores() {
+async function renderScores() {
   const scores = await getScores();
   const sortedScores = await sortScores(scores);
 
@@ -40,3 +40,5 @@ export default async function renderScores() {
     table.appendChild(tr);
   }
 }
+
+export { renderScores, getScores };
