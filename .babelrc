@@ -1,14 +1,31 @@
 {
-  "presets": [
-    ["@babel/env", {
-      "targets": {
-        "browsers": [
-          ">0.25%",
-          "not ie 11",
-          "not op_mini all"
+  "env": {
+    "dev": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "browsers": [">0.25%", "not ie 11", "not op_mini all"],
+              "node": "current"
+            },
+            "modules": "false"
+          }
         ]
-      },
-      "modules": false
-    }]
-  ],
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "browsers": [">0.25%", "not ie 11", "not op_mini all"],
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
 }

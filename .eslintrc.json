@@ -18,7 +18,7 @@
         "arrow-parens": "off"
     },
     "ignorePatterns": [
-        "dist/app.bundle.js",
+        "dist/bundle.min.js",
         "node_modules/"
     ]
 }

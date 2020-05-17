@@ -1,41 +1,69 @@
 {
-  "name": "phaser3-project-template",
+  "name": "phaser-capstone-project",
   "version": "1.1.0",
-  "description": "A Phaser 3 Project Template",
+  "description": "A Phaser 3 Project for Microverse",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "dev": "webpack-dev-server --config webpack/base.js --open",
+    "start": "http-server dist",
+    "test": "export NODE_ENV=test && jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/photonstorm/phaser3-project-template.git"
+    "url": "git+https://github.com/fedgut/js_capstone_platform_game.git"
   },
-  "author": "Richard Davey <rdavey@gmail.com> (http://www.photonstorm.com)",
+  "author": "Eduardo Gutierrez",
   "license": "MIT",
   "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
-  "bugs": {
-    "url": "https://github.com/photonstorm/phaser3-project-template/issues"
-  },
-  "homepage": "https://github.com/photonstorm/phaser3-project-template#readme",
+  "homepage": "https://github.com/fedgut/js_capstone_platform_game#readme",
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-syntax-import-meta": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "babel-jest": "^26.0.1",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-polyfill": "^6.26.0",
+    "canvas": "^2.6.1",
+    "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "file-loader": "^4.2.0",
-    "html-webpack-plugin": "^3.2.0",
+    "file-loader": "^4.3.0",
+    "html-loader": "^1.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "jest-canvas-mock": "^2.2.0",
+    "jest-fetch-mock": "^3.0.3",
+    "jsdom": "^16.2.2",
     "raw-loader": "^3.1.0",
-    "terser-webpack-plugin": "^2.2.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0",
-    "webpack-merge": "^4.2.2"
+    "regenerator-runtime": "^0.13.5",
+    "sinon": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "phaser": "^3.20.1"
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.12.3",
+    "phaser": "3.20.1",
+    "terser-webpack-plugin": "^2.3.6",
+    "webpack": "^4.43.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "bugs": {
+    "url": "https://github.com/fedgut/js_capstone_platform_game/issues"
   }
 }
