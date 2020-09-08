@@ -13,7 +13,7 @@ A platform game created in phaser 3 for Microverse's JS capstone project
 - Eduardo Gutierrez 
   - [GitHub](https://github.com/fedgut/)
 
-## Getting started
+# Getting started
 
 ## Instructions
  - Click to jump between platforms. In easy mode, you can jump 3 consecutive times, 2 times in hard mode. 
@@ -38,9 +38,9 @@ Don't Know where to start? Peek into this entry-level tutorials:
 
 - Concept: A gothic platform game reinterpreting the classic Orpheo and Euridice Myth
 
-# Final Game idea
+## Final Game idea
  - An endless level. Orpheo hopes to reach the underworld, but it is impossible. He must find a way to deal with the grieve of losing Euridice, no way around it. 
  - Orpheo must jump between platforms to avoid chasms and bombs while grabbing as most coins as possible.
 
-# Assets
+## Assets
 - Using sprites from [Luis Zuno](https://www.patreon.com/ansimuz)
